@@ -34,7 +34,7 @@
     </div>
 
     <div class="container mt-3">
-        <p><b>Filter</b></p>
+        <p><b>Filter <i class="fas fa-cog"></i> </b></p>
 <form action="/student/service/applyfilter" method='get'>
 
         <div class="row">
@@ -80,7 +80,7 @@
     <td> {{i.gender}}</td>
     <td> {{i.studentid}}</td>
     <td> {{i.marks}}</td>
-    <td>  <a href="/student/service/delete/student/{{i.studentid}}" class="text-danger">Delete</a></td>
+    <td>  <a href="/student/service/delete/student/{{i.studentid}}" class="text-danger"><i class="fa-solid fa-trash"></i>  Delete</a></td>
         </tr>
     
         {% endfor %}
@@ -118,7 +118,9 @@
     {% endif %}
 
 </div>
-
+<div class="container mt-2 text-center">
+    <img src="{% static 'student/img/icon.svg' %}" alt="" width="100%" height="200" class='ing-fluid text-center'>
+</div>
 
 {% endblock content %}
 

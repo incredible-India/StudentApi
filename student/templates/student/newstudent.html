@@ -15,6 +15,10 @@
 
     <div class="row">
         <div class="col-sm-4">
+
+            <div class="container mt-2">
+                <h3>Add New Stundet <i class="fas fa-user"></i> </h3>
+            </div>
             {% if messages %}
             {% for k in messages %} 
             
@@ -56,6 +60,9 @@
 
             </form>
 
+            <div class="container mt-2">
+                <img src="{% static 'student/img/icon.svg' %}" alt="" width="100%" height="200">
+            </div>
         </div>
 
         <div class="col-sm-8">
@@ -88,7 +95,7 @@
         <td> {{i.gender}}</td>
         <td> {{i.studentid}}</td>
         <td> {{i.marks}}</td>
-        <td>  <a href="delete/student/{{i.studentid}}" class="text-danger">Delete</a></td>
+        <td>  <a href="delete/student/{{i.studentid}}" class="text-danger"> <i class="fa-solid fa-trash"></i> Delete</a></td>
             </tr>
         
             {% endfor %}
