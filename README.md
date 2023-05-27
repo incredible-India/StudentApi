@@ -9,3 +9,6 @@
 <li> Locate the manage.py file in KiranCapital Directory </li>
 <li> In same directory where manage.py is there open CMD or Powershell and write the follwonf command </li>
 <code> python manage.oy runserver </code>
+
+
+### For Help contact at 9523646954 or 8604470501 
