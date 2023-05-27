@@ -1,0 +1,89 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+
+<title>Stundet Info</title>
+{% endblock title %}
+
+
+{% block content %}
+
+{% include 'core/navbar.html' %}
+
+<div class="container mt-4">
+
+    
+
+    {% if students %}
+    
+    <div class="container mt-2">
+        <input type="text" class='form-control' onkeyup="myFunction()" placeholder="Search Stundet " id="myInput">
+    </div>
+
+    <table class="table table-striped mt-3" id="myTable">
+
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>ID</th>
+                    <th>Total Marks</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+        {% for i in students %}
+        <tr>
+    <td> {{i.studentName}}</td>
+    <td> {{i.age}}</td>
+    <td> {{i.gender}}</td>
+    <td> {{i.studentid}}</td>
+    <td> {{i.marks}}</td>
+    <td>  <a href="delete/student/{{i.studentid}}" class="text-danger">Delete</a></td>
+        </tr>
+    
+        {% endfor %}
+            </tbody>
+    </table>
+    {% if is_paginated %}
+
+    <div class="row">
+        <div class="col-sm-4"></div>
+    
+        <div class="col-sm-8">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                  <li class="page-item"><a class="page-link" href="?page={{page_obj.previous_page_number}}">Previous</a></li>
+                  {% endif %}
+                  <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                  <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+                  <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">..</a></li>
+                  <li class="page-item"><a class="page-link" href="?page={{page_obj.paginator.num_pages}}">{{page_obj.paginator.num_pages}}</a></li>
+                  {% if page_obj.has_next %}
+                  <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">Next</a></li>
+                  {% endif %}
+                  {% endif %}
+
+  
+
+    
+
+    {% else %}
+
+    <h3 class="text-center mt-4">No Student..</h3>
+    
+    {% endif %}
+
+</div>
+
+
+{% endblock content %}
+
+
+{% block script %}
+<script src="{% static 'student/js/student.js' %}" />
+{% endblock script %}
