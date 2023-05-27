@@ -12,4 +12,7 @@ urlpatterns = [
    
     path("stundetinfo/",sv.StundeDetails.as_view(),name="stundetinfo"),
     
+    #applying the filter to the stundet
+    path('applyfilter',sv.FilterStudentOptions.as_view(),name="studdent filters")
+    
 ]

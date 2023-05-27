@@ -11,7 +11,7 @@ from django.views.generic.list import ListView
 from django.core import serializers
 from django.http import JsonResponse
 from django.core.paginator import Paginator
-
+from django.db.models import Q
 #adding new student logic and give the form to add the new student
 
 class NewStudent(ListView):
@@ -89,4 +89,34 @@ class StundeDetails(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # You can add additional context data here if needed
+        return context
+    
+    
+#filtring the result
+class FilterStudentOptions(ListView):
+    model = Student
+    template_name = 'student/studentinfo.html'
+    context_object_name = 'students'
+    ordering = ['id']
+    paginate_by = 5
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        # Get the filter value from the request parameters
+        filter_value = self.request.GET.get('mark')
+        filter_option = self.request.GET.get('marks')
+        
+        # Apply the filter if the value is provided
+        if filter_value:
+            if filter_option == 'l':
+                queryset = queryset.filter(marks__lte = filter_value )
+            else :
+                queryset = queryset.filter(marks__gt =filter_value)
+                
+                
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Add any additional context data here if needed
         return context

@@ -12,12 +12,51 @@
 
 <div class="container mt-4">
 
+    <div class="container mt-2">
+        {% if messages %}
+        {% for k in messages %} 
+        
+        <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+            <strong>{{k}}</strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        
+        
+        {% endfor %}
+        {% endif %}
+    </div>
     
 
     {% if students %}
     
     <div class="container mt-2">
         <input type="text" class='form-control' onkeyup="myFunction()" placeholder="Search Stundet " id="myInput">
+    </div>
+
+    <div class="container mt-3">
+        <p><b>Filter</b></p>
+<form action="/student/service/applyfilter" method='get'>
+
+        <div class="row">
+            {% comment %} <div class="col-sm-4">
+                <input type="text" name="" id="" class="form-control" placeholder="Student id">
+            </div>
+            <div class="col-sm-4">
+                <input type="text" name="" id="" class="form-control" placeholder="Stunde gender">
+            </div> {% endcomment %}
+            <div class="col-sm-4">
+                <input type="text" name="mark" id="" class="form-control" placeholder="student marks">
+               <div class="container mt-2">
+                <label for="marksg">Greater Than</label>
+                <input type="radio" name="marks" id="marksg" value='g'>
+                <label for="marksl">Less Than</label>
+                <input type="radio" name="marks" id="marksl" value='l'>
+               </div>
+            </div>
+        </div>
+
+        <input type="submit" value="Apply Filter" class="btn btn-primary mt-2">
+    </form>
     </div>
 
     <table class="table table-striped mt-3" id="myTable">
@@ -41,7 +80,7 @@
     <td> {{i.gender}}</td>
     <td> {{i.studentid}}</td>
     <td> {{i.marks}}</td>
-    <td>  <a href="delete/student/{{i.studentid}}" class="text-danger">Delete</a></td>
+    <td>  <a href="/student/service/delete/student/{{i.studentid}}" class="text-danger">Delete</a></td>
         </tr>
     
         {% endfor %}
