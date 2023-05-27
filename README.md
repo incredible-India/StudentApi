@@ -1,7 +1,7 @@
 # StundetApi
 
 ## To Run this project
-** Install python version > 3.0
-** install the django write the following coomand to install djago
+<li> Install python version > 3.0 </li>
+<li> install the django write the following coomand to install django </li>
 <code> pip  install django </code>
 
